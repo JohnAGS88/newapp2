@@ -1,5 +1,7 @@
 # newapp
 
+This is a small application for the registration of employees within a company, it keeps track of the time and date they arrive, take their breaks and leave.
+
 ## Project setup
 ```
 npm install
