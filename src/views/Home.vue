@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-      <h1>Bienvenidos a StrikeOut-App</h1>
+      <h1>Welcome StrikeOut-App</h1>
     <div class="container">
       <div class="row">
         <div class="col-md-4"></div>
@@ -8,15 +8,15 @@
           <div>
             <div id="formContent">
               <form id="app">
-                <input  type="text" placeholder="Nombre">
-                <input v-model="apellido" type="text" placeholder="Apellido">
+                <input  type="text" placeholder="Name">
+                <input v-model="apellido" type="text" placeholder="Lastname">
               </form>
               <div class="datetime">
-            <label for="example-datepicker">Calendario</label>
+            <label for="example-datepicker">Calendar</label>
               <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
-              <p>La Fecha de Hoy: {{ value }}</p>
-              <button type="button" href="/about" @click.capture="showMessage" class="btn btn-outline-dark">
-                <router-link to="/about">Registrate</router-link>
+              <p>Today Is: {{ value }}</p>
+              <button type="button" href="/profile" @click.capture="showMessage" class="btn btn-outline-dark">
+                <router-link style="text-decoration:none; color: inherit" to="/profile">Go To</router-link>
               </button>
               </div>
             </div>
@@ -36,6 +36,7 @@
   margin-top: 10%;
   padding: 1%;
 }
+
 </style>
 
 <script>
@@ -47,7 +48,7 @@ export default {
   },
   methods: {
     showMessage() {
-      alert("Hola! Gracias por Registrarte!");
+      alert("Hi! Thank you for registering!");
     }
   }
 }

@@ -1,48 +1,66 @@
 <template>
-    <div class="container">
-      <h1>Bienvenidos a StrikeOut-App</h1>
-        <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Fecha y Hora</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Primer Break</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>Almuerzo o Comida</td>
-    </tr>
-    <tr>
-      <td colspan=""></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table> 
-    <button type="button" class="btn btn-outline-dark">
-      <router-link to="/">Cerrar</router-link>
-    </button>
+  <div class="dos">
+    <h1>Welcome StrikeOut-App</h1>
+      <b-form class="form" @submit="onSubmit" @reset="onReset" v-if="show">
+          <b-form-group id="input-group-2" label="Your Full Name:" label-for="input-2">
+            <b-form-input id="input-2" v-model="form.name" placeholder="" required></b-form-input>
+          </b-form-group>
+            <b-form-group id="input-group-3" label="Your Break:" label-for="input-3">
+            <b-form-select id="input-3" v-model="form.food" :options="foods" required></b-form-select>
+          </b-form-group>
+          <button type="button" class="btn btn-outline-dark">
+            <router-link style="text-decoration:none; color: inherit" to="/list">Select</router-link>
+          </button>
+      </b-form>
   </div>
 </template>
 
 <script>
-  
+  export default {
+    data() {
+      return {
+        form: {
+          email: '',
+          name: '',
+          break: null,
+          checked: []
+        },
+        foods: [{ text: '', value: null }, 'Firts Break', 'Lunch', 'Seconds Break', 'Exit'],
+        show: true
+      }
+    },
+    methods: {
+      onSubmit(event) {
+        event.preventDefault()
+        alert(JSON.stringify(this.form))
+      },
+      onReset(event) {
+        event.preventDefault()
+        this.form.name = ''
+        this.form.break = null
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      }
+    }
+  }
 </script>
 
-<style>
-.table {
+
+<style scoped>
+.dos{
+  
+  margin-top: 10%;
+
+}
+
+.form {
 
   padding: 1%;
-  width: 15%;
-  margin-top: 5%;
+  width: 25%;
+  margin-left: 37%;
   border: 2px solid #f6f6f6;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
@@ -50,7 +68,16 @@
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
 
-.container {
-  margin-top: 10%;
+h1 {
+  margin-bottom: 5%;
 }
+
+.btn {
+  margin-top: 8%;
+}
+
 </style>
+
+/* <button type="button" class="btn btn-outline-dark">
+            <router-link to="/list">Selecciona</router-link>
+          </button> */
